@@ -1,7 +1,12 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'demo-react-native-lib';
+import {
+  Button,
+  DefaultTheme,
+  multiply,
+  ThemeProvider,
+} from 'demo-react-native-lib';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
@@ -10,10 +15,27 @@ export default function App() {
     multiply(3, 7).then(setResult);
   }, []);
 
+  const newTheme: typeof DefaultTheme = {
+    ...DefaultTheme,
+    palette: {
+      ...DefaultTheme.palette,
+      brand: {
+        ...DefaultTheme.palette.brand,
+        primary: '#ff0000',
+        secondary: '#00ff00',
+      },
+    },
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <ThemeProvider theme={newTheme}>
+      <View style={styles.container}>
+        <Text>Result: {result}</Text>
+        <Button variant="primary">Primary</Button>
+        {/* <Space /> */}
+        <Button variant="secondary">Secondary</Button>
+      </View>
+    </ThemeProvider>
   );
 }
 
