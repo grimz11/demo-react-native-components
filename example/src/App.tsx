@@ -1,53 +1,47 @@
 import * as React from 'react';
+import * as Font from 'expo-font';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 import {
   Button,
   DefaultTheme,
-  multiply,
+  Space,
   ThemeProvider,
+  useTheme,
 } from 'demo-react-native-lib';
+import styled from 'styled-components/native';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [isFontLoaded] = Font.useFonts({
+    CircularStdBlack: require('../assets/fonts/CircularStd-Black.ttf'),
+    CircularStdBold: require('../assets/fonts/CircularStd-Bold.ttf'),
+    CircularStdBook: require('../assets/fonts/CircularStd-Book.ttf'),
+    CircularStdMedium: require('../assets/fonts/CircularStd-Medium.ttf'),
+  });
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const theme = useTheme();
+  const Container = styled.View`
+    flex: 1;
+    margin-top: ${theme.space[5]};
+    padding: ${theme.space[3]};
+  `;
 
-  const newTheme: typeof DefaultTheme = {
-    ...DefaultTheme,
-    palette: {
-      ...DefaultTheme.palette,
-      brand: {
-        ...DefaultTheme.palette.brand,
-        primary: '#ff0000',
-        secondary: '#00ff00',
-      },
-    },
-  };
+  if (!isFontLoaded) {
+    return null;
+  }
 
   return (
-    <ThemeProvider theme={newTheme}>
-      <View style={styles.container}>
-        <Text>Result: {result}</Text>
-        <Button variant="primary">Primary</Button>
-        {/* <Space /> */}
-        <Button variant="secondary">Secondary</Button>
-      </View>
+    <ThemeProvider theme={DefaultTheme}>
+      <ScrollView>
+        <Container>
+          {/* <Text variant="h5">Buttons</Text> */}
+          <Button variant="primary">Primary</Button>
+          <Space />
+          <Button variant="secondary" type="outline">
+            Secondary
+          </Button>
+        </Container>
+      </ScrollView>
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});

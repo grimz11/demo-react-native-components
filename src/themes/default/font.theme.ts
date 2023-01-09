@@ -1,7 +1,7 @@
 import type {
-  IFontSizesTheme,
+  IFontWeightTheme,
   IFontTheme,
-  IFontWeightsTheme,
+  IFontSizeTheme,
 } from '../interfaces/font.theme.interface';
 
 export const font: IFontTheme = {
@@ -19,19 +19,20 @@ export const font: IFontTheme = {
   h6: 'CircularStdMedium',
 };
 
-export const fontWeights: IFontWeightsTheme = {
+export const fontWeight: IFontWeightTheme = {
   regular: 400,
   medium: 500,
   bold: 700,
 };
 
-export const fontSizes: IFontSizesTheme = {
+export const fontSize: IFontSizeTheme = {
   body: '12px',
   caption: '14px',
   button: '14px',
   label: '18px',
   title: '20px',
   subtitle: '16px',
+  h6: '18px',
   h5: '24px',
   h4: '28px',
   h3: '36px',

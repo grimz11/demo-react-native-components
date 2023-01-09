@@ -8,7 +8,7 @@ export const ThemeProvider: React.FC<IThemeProvider> = ({
   children,
   theme,
 }) => {
-  const { font, palette, size } = theme;
+  const { font, fontWeight, fontSize, palette, size, space } = theme;
 
   const currentFont = React.useMemo(() => {
     return {
@@ -28,13 +28,41 @@ export const ThemeProvider: React.FC<IThemeProvider> = ({
     };
   }, [size]);
 
+  const currentSpace = React.useMemo(() => {
+    return {
+      ...space,
+    };
+  }, [space]);
+
+  const currentFontWeight = React.useMemo(() => {
+    return {
+      ...fontWeight,
+    };
+  }, [fontWeight]);
+
+  const currentFontSize = React.useMemo(() => {
+    return {
+      ...fontSize,
+    };
+  }, [fontSize]);
+
   const currentTheme: ITheme = React.useMemo(() => {
     return {
       font: currentFont,
       palette: currentPalette,
       size: currentSize,
+      space: currentSpace,
+      fontWeight: currentFontWeight,
+      fontSize: currentFontSize,
     };
-  }, [currentFont, currentPalette, currentSize]);
+  }, [
+    currentFont,
+    currentPalette,
+    currentSize,
+    currentSpace,
+    currentFontWeight,
+    currentFontSize,
+  ]);
 
   return (
     <ThemeContext.Provider value={currentTheme}>

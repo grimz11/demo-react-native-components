@@ -20,7 +20,7 @@ const positionVariant = {
 interface IVariant {
   position?: keyof typeof positionVariant;
   size?: keyof typeof sizeVariant;
-  theme?: ITheme | any;
+  theme?: ITheme;
   children?: React.ReactNode;
   variant?: string;
 }

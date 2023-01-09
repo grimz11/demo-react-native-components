@@ -6,6 +6,7 @@ import { ITheme, useTheme } from '../../themes';
 interface IProps {
   children: ReactNode;
   variant?: 'primary' | 'secondary';
+  type?: 'solid' | 'outline';
   buttonStyles?: object;
 }
 
@@ -15,16 +16,19 @@ const getButtonStyles = (variant: IProps['variant'], theme: ITheme) => {
       return {
         backgroundColor: theme.palette.brand.primary,
         color: theme.palette.text.default,
+        fontFamily: theme.font.body,
       };
     case 'secondary':
       return {
         backgroundColor: theme.palette.brand.secondary,
-        color: theme.palette.text.primary,
+        color: theme.palette.text.default,
+        fontFamily: theme.font.body,
       };
     default:
       return {
         backgroundColor: theme.palette.brand.primary,
         color: theme.palette.text.default,
+        fontFamily: theme.font.body,
       };
   }
 };

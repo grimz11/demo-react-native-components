@@ -13,19 +13,20 @@ export interface IFontTheme {
   h6: string;
 }
 
-export interface IFontWeightsTheme {
+export interface IFontWeightTheme {
   regular: number;
   medium: number;
   bold: number;
 }
 
-export interface IFontSizesTheme {
+export interface IFontSizeTheme {
   caption: string;
   button: string;
   body: string;
   label: string;
   title: string;
   subtitle: string;
+  h6: string;
   h5: string;
   h4: string;
   h3: string;
