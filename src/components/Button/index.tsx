@@ -1,54 +1,27 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components/native';
-import { Button as RNEButton } from '@rneui/themed';
-import { ITheme, useTheme } from '../../themes';
+import React from 'react';
+import { Button as RNEButton, ButtonProps } from '@rneui/themed';
 
-interface IProps {
-  children: ReactNode;
-  variant?: 'primary' | 'secondary';
-  type?: 'solid' | 'outline';
-  buttonStyles?: object;
+import { IColorTheme, IPaletteTheme, useTheme } from '../../themes';
+
+export interface IButtonProps extends ButtonProps {
+  palette?: keyof IPaletteTheme;
+  color?: keyof IColorTheme;
+  [key: string]: any;
 }
 
-const getButtonStyles = (variant: IProps['variant'], theme: ITheme) => {
-  switch (variant) {
-    case 'primary':
-      return {
-        backgroundColor: theme.palette.brand.primary,
-        color: theme.palette.text.default,
-        fontFamily: theme.font.body,
-      };
-    case 'secondary':
-      return {
-        backgroundColor: theme.palette.brand.secondary,
-        color: theme.palette.text.default,
-        fontFamily: theme.font.body,
-      };
-    default:
-      return {
-        backgroundColor: theme.palette.brand.primary,
-        color: theme.palette.text.default,
-        fontFamily: theme.font.body,
-      };
-  }
-};
-
-const Container = styled(RNEButton).attrs<IProps>(({ buttonStyles }) => ({
-  buttonStyle: { ...buttonStyles, borderRadius: 8 },
-  titleStyle: { ...buttonStyles, fontSize: 24 },
-}))<IProps>``;
-
-export const Button: React.FC<IProps> = ({ children, variant, ...props }) => {
+export const Button: React.FC<IButtonProps> = ({
+  palette = 'brand',
+  color = 'primary',
+  ...props
+}) => {
   const theme = useTheme();
-  const variantStyles = getButtonStyles(variant, theme);
+  const themeColors = theme.palette;
+  const colorValue = themeColors[palette][color];
 
   return (
-    <Container variant={variant} buttonStyles={variantStyles} {...props}>
-      {children}
-    </Container>
+    <RNEButton
+      {...props}
+      buttonStyle={[{ backgroundColor: colorValue }, props.buttonStyle]}
+    />
   );
-};
-
-Button.defaultProps = {
-  variant: 'primary',
 };

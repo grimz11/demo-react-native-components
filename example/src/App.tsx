@@ -35,10 +35,16 @@ export default function App() {
       <ScrollView>
         <Container>
           {/* <Text variant="h5">Buttons</Text> */}
-          <Button variant="primary">Primary</Button>
-          <Space />
-          <Button variant="secondary" type="outline">
-            Secondary
+          <Button palette="brand" color="primary" size="lg">
+            Brand Primary
+          </Button>
+          <Space position="top" size="medium" />
+          <Button palette="bg" color="primary" size="lg">
+            BG primary
+          </Button>
+          <Space position="top" size="medium" />
+          <Button palette="brand" color="secondary" size="lg" loading>
+            Loading
           </Button>
         </Container>
       </ScrollView>

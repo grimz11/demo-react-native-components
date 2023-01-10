@@ -13,6 +13,6 @@ export interface ITheme {
 }
 
 export interface IThemeProvider {
-  theme: ITheme;
+  theme: any;
   children: React.ReactNode;
 }
