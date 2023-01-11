@@ -4,3 +4,4 @@ export * from './Text';
 export * from './SafeAreaView';
 export * from './Layout';
 export * from './Container';
+export * from './Lodable';

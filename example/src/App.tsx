@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 
-import { ScrollView } from 'react-native';
-import { Container, DefaultTheme, ThemeProvider } from 'demo-react-native-lib';
-import { ButtonScene } from './Scenes/Button';
+import { DefaultTheme, ThemeProvider } from 'demo-react-native-lib';
+import { BaseNavigation } from './core/navigations/base.navigator';
 
 export default function App() {
   const [isFontLoaded] = Font.useFonts({
@@ -19,11 +18,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={DefaultTheme}>
-      <ScrollView>
-        <Container>
-          <ButtonScene />
-        </Container>
-      </ScrollView>
+      <BaseNavigation />
     </ThemeProvider>
   );
 }
