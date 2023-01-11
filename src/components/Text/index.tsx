@@ -1,6 +1,7 @@
+import * as React from 'react';
 import styled from 'styled-components/native';
 
-import type { ITheme } from '../../themes';
+import { ITheme, useTheme } from '../../themes';
 
 const defaultTextStyles = (theme: ITheme) => `
   font-family: ${theme.font.body};
@@ -11,12 +12,17 @@ const defaultTextStyles = (theme: ITheme) => `
   margin-bottom: 0px;
 `;
 
-const button = (theme: ITheme) => `
+const h1 = (theme: ITheme) => `
     font-family: ${theme.font.h1};
-    font-size: ${theme.fontSize.button};
+    font-size: ${theme.fontSize.h1};
     color: ${theme.palette.text.primary};
 `;
 
+const h2 = (theme: ITheme) => `
+    font-family: ${theme.font.h2};
+    font-size: ${theme.fontSize.h2};
+    color: ${theme.palette.text.primary};
+`;
 const h3 = (theme: ITheme) => `
     font-family: ${theme.font.h3};
     font-size: ${theme.fontSize.h3};
@@ -69,7 +75,6 @@ const label = (theme: ITheme) => `
 `;
 
 const variants = {
-  button,
   body,
   label,
   caption,
@@ -79,6 +84,8 @@ const variants = {
   h5,
   h3,
   h4,
+  h2,
+  h1,
 };
 
 interface IProps {
@@ -87,10 +94,20 @@ interface IProps {
   children?: React.ReactNode;
 }
 
-export const Text: React.FC<IProps> = styled.Text<IProps>`
+const Container = styled.Text<IProps>`
   ${({ theme }) => defaultTextStyles(theme)}
   ${({ variant, theme }) => variants[variant!](theme)}
 `;
+
+export const Text: React.FC<IProps> = ({ children, ...props }) => {
+  const theme = useTheme();
+
+  return (
+    <Container theme={theme} {...props}>
+      {children}
+    </Container>
+  );
+};
 
 Text.defaultProps = {
   variant: 'body',

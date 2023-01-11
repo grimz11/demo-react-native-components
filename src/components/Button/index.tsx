@@ -9,6 +9,16 @@ export interface IButtonProps extends ButtonProps {
   [key: string]: any;
 }
 
+const getColorValueByType = (colorValue: string, type?: string) => {
+  switch (type) {
+    case 'outline':
+    case 'clear':
+      return 'transparent';
+    default:
+      return colorValue;
+  }
+};
+
 export const Button: React.FC<IButtonProps> = ({
   palette = 'brand',
   color = 'primary',
@@ -16,7 +26,10 @@ export const Button: React.FC<IButtonProps> = ({
 }) => {
   const theme = useTheme();
   const themeColors = theme.palette;
-  const colorValue = themeColors[palette][color];
+  const colorValue = getColorValueByType(
+    themeColors[palette][color]!,
+    props.type
+  );
 
   return (
     <RNEButton

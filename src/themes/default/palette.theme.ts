@@ -20,7 +20,7 @@ export const palette: IPaletteTheme = {
     disabled: '#6e6e6e',
   },
   text: {
-    primary: '#25005A',
+    primary: '#49454e',
     secondary: '#F5EFF4',
     background: '#6e6e6e',
     warning: '#f47a00',

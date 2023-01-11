@@ -6,6 +6,7 @@ import {
   Button,
   DefaultTheme,
   Space,
+  Text,
   ThemeProvider,
   useTheme,
 } from 'demo-react-native-lib';
@@ -23,6 +24,7 @@ export default function App() {
   const Container = styled.View`
     flex: 1;
     margin-top: ${theme.space[5]};
+    margin-bottom: ${theme.space[5]};
     padding: ${theme.space[3]};
   `;
 
@@ -34,7 +36,8 @@ export default function App() {
     <ThemeProvider theme={DefaultTheme}>
       <ScrollView>
         <Container>
-          {/* <Text variant="h5">Buttons</Text> */}
+          <Text variant="h3">Buttons</Text>
+          <Space position="bottom" size="medium" />
           <Button palette="brand" color="primary" size="lg">
             Brand Primary
           </Button>
@@ -45,6 +48,14 @@ export default function App() {
           <Space position="top" size="medium" />
           <Button palette="brand" color="secondary" size="lg" loading>
             Loading
+          </Button>
+          <Space position="top" size="medium" />
+          <Button palette="bg" color="primary" size="lg" type="clear">
+            Clear
+          </Button>
+          <Space position="top" size="medium" />
+          <Button palette="bg" color="primary" size="lg" type="outline">
+            Outline
           </Button>
         </Container>
       </ScrollView>
