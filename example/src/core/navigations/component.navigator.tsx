@@ -5,22 +5,21 @@ import {
 } from '@react-navigation/stack';
 import { ButtonScene } from '../../Scenes/Button';
 
-export type ButtonNavigatorParamList = {
+export type ComponentNavigatorParamList = {
   ButtonScene: undefined;
 };
 
-export type ButtonNavigationProp =
-  StackNavigationProp<ButtonNavigatorParamList>;
-export type ButtonNavigationProps = {
-  navigation: ButtonNavigationProp;
+export type ComponentNavigationProp =
+  StackNavigationProp<ComponentNavigatorParamList>;
+export type ComponentNavigationProps = {
+  navigation: ComponentNavigationProp;
 };
 
-const Stack = createStackNavigator<ButtonNavigatorParamList>();
+const Stack = createStackNavigator<ComponentNavigatorParamList>();
 
-export const ButtonNavigator = () => {
+export const ComponentNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="ButtonScene"
       screenOptions={{
         headerShown: false,
       }}

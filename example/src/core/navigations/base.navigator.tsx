@@ -16,11 +16,7 @@ const Navigator = styled(Tab.Navigator).attrs({
 export const BaseNavigation = () => {
   return (
     <NavigationContainer>
-      <Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
+      <Navigator>
         {authNavigationList.map(
           (option) =>
             option.shawInMenu && <Tab.Screen key={option.name} {...option} />
