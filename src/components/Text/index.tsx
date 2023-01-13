@@ -3,10 +3,25 @@ import styled from 'styled-components/native';
 
 import { ITheme, useTheme } from '../../themes';
 
-const defaultTextStyles = (theme: ITheme) => `
+const getColor = (theme: ITheme, type?: string) => {
+  switch (type) {
+    case 'error':
+      return theme.palette.text.error;
+    case 'success':
+      return theme.palette.text.success;
+    case 'warning':
+      return theme.palette.text.warning;
+    case 'disabled':
+      return theme.palette.text.disabled;
+    default:
+      return theme.palette.text.primary;
+  }
+};
+
+const defaultTextStyles = (theme: ITheme, type?: string) => `
   font-family: ${theme.font.body};
   font-weight: ${theme.fontWeight.regular};
-  color: ${theme.palette.text.primary};
+  color: ${getColor(theme, type)};
   flex-wrap: wrap;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -15,36 +30,30 @@ const defaultTextStyles = (theme: ITheme) => `
 const h1 = (theme: ITheme) => `
     font-family: ${theme.font.h1};
     font-size: ${theme.fontSize.h1};
-    color: ${theme.palette.text.primary};
 `;
 
 const h2 = (theme: ITheme) => `
     font-family: ${theme.font.h2};
     font-size: ${theme.fontSize.h2};
-    color: ${theme.palette.text.primary};
 `;
 const h3 = (theme: ITheme) => `
-    font-family: ${theme.font.h3};
+    font-family: ${theme.font.body};
     font-size: ${theme.fontSize.h3};
-    color: ${theme.palette.text.primary};
 `;
 
 const h4 = (theme: ITheme) => `
     font-family: ${theme.font.h4};
     font-size: ${theme.fontSize.h4};
-    color: ${theme.palette.text.primary};
 `;
 
 const h5 = (theme: ITheme) => `
     font-family: ${theme.font.h5};
     font-size: ${theme.fontSize.h5};
-    color: ${theme.palette.text.primary};
 `;
 
 const h6 = (theme: ITheme) => `
     font-family: ${theme.font.h6};
     font-size: ${theme.fontSize.h6};
-    color: ${theme.palette.text.primary};
     font-weight: ${theme.fontWeight.bold};
 `;
 
@@ -91,19 +100,20 @@ const variants = {
 interface IProps {
   theme?: ITheme;
   variant?: keyof typeof variants;
+  type?: 'error' | 'success' | 'warning' | 'disabled' | 'default';
   children?: React.ReactNode;
 }
 
 const Container = styled.Text<IProps>`
-  ${({ theme }) => defaultTextStyles(theme)}
+  ${({ theme, type }) => defaultTextStyles(theme, type)}
   ${({ variant, theme }) => variants[variant!](theme)}
 `;
 
-export const Text: React.FC<IProps> = ({ children, ...props }) => {
+export const Text: React.FC<IProps> = ({ children, type, ...props }) => {
   const theme = useTheme();
 
   return (
-    <Container theme={theme} {...props}>
+    <Container theme={theme} type={type!} {...props}>
       {children}
     </Container>
   );
@@ -111,4 +121,5 @@ export const Text: React.FC<IProps> = ({ children, ...props }) => {
 
 Text.defaultProps = {
   variant: 'body',
+  type: 'default',
 };

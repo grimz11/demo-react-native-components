@@ -8,9 +8,9 @@ interface IProps {
 }
 
 const ContainerStyled = styled.View<IProps>`
-  margin-top: ${(props) => props.theme.space[5]};
   margin-bottom: ${(props) => props.theme.space[5]};
-  padding: ${(props) => props.theme.space[3]};
+  padding-right: ${(props) => props.theme.space[3]};
+  padding-left: ${(props) => props.theme.space[3]};
 `;
 
 interface IContainerProps {

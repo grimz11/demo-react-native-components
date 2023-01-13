@@ -4,7 +4,7 @@ export const palette: IPaletteTheme = {
   brand: {
     primary: '#f47a00',
     secondary: '#0274be',
-    background: '#6e6e6e',
+    background: '#ffffff',
     warning: '#f47a00',
     error: '#BA1B1B',
     success: '#138000',
