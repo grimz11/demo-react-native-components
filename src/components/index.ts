@@ -6,3 +6,4 @@ export * from './Layout';
 export * from './Container';
 export * from './Lodable';
 export * from './ListItem';
+export * from './Input';
