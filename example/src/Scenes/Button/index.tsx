@@ -10,7 +10,7 @@ export const ButtonScene = () => {
           Brand Primary
         </Button>
         <Space position="top" size="medium" />
-        <Button palette="bg" color="primary" size="lg">
+        <Button palette="bg" color="secondary" size="lg">
           BG primary
         </Button>
         <Space position="top" size="medium" />

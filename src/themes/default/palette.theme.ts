@@ -11,8 +11,8 @@ export const palette: IPaletteTheme = {
     disabled: '#6e6e6e',
   },
   bg: {
-    primary: '#25005A',
-    secondary: '#F5EFF4',
+    primary: '#F5EFF4',
+    secondary: '#25005A',
     background: '#6e6e6e',
     warning: '#f47a00',
     error: '#BA1B1B',

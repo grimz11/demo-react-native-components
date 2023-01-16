@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import * as React from 'react';
+import { StatusBar } from 'react-native';
 
 import { ITheme, useTheme } from '../../themes';
 
@@ -8,9 +9,12 @@ interface IProps {
 }
 
 const ContainerStyled = styled.View<IProps>`
-  margin-bottom: ${(props) => props.theme.space[5]};
   padding-right: ${(props) => props.theme.space[3]};
   padding-left: ${(props) => props.theme.space[3]};
+  flex: 1;
+  justify-content: center;
+  background-color: ${(props) => props.theme.palette.bg.primary};
+  ${StatusBar.currentHeight && `height: ${StatusBar.currentHeight}px`}
 `;
 
 interface IContainerProps {

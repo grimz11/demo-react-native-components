@@ -7,3 +7,5 @@ export * from './Container';
 export * from './Lodable';
 export * from './ListItem';
 export * from './Input';
+export * from './FAB';
+export * from './Avatar';

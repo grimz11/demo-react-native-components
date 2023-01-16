@@ -1,1 +1,3 @@
-export * from './component.navigator';
+export * from './typography.navigator';
+export * from './button.navigator';
+export * from './auth.navigator';

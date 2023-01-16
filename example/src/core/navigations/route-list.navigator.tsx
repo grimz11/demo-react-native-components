@@ -1,28 +1,52 @@
 import React from 'react';
-import { ComponentNavigator } from './component.navigator';
 import type { ITabItem } from './interfaces/tab-item.interface';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Loadable } from 'demo-react-native-lib';
-import { HomeNavigator } from './home.navigator';
+import { ButtonNavigator } from './button.navigator';
+import { TypographyNavigator } from './typography.navigator';
+import { FABNavigator } from './fab.navigator';
+import { AvatarNavigator } from './avatar.navigator';
 
-export const authNavigationList: ITabItem[] = [
+export const dashboardNavigationList: ITabItem[] = [
   {
-    name: 'Home',
-    component: Loadable(HomeNavigator),
+    name: 'Buttons',
+    component: Loadable(ButtonNavigator),
     shawInMenu: true,
     options: {
-      tabBarLabel: 'Home',
+      tabBarLabel: 'Button',
       tabBarIcon: ({ color }) => (
         <Icon name="home" size={25} color={color} solid={false} />
       ),
     },
   },
   {
-    name: 'Components',
-    component: Loadable(ComponentNavigator),
+    name: 'FAB',
+    component: Loadable(FABNavigator),
     shawInMenu: true,
     options: {
-      tabBarLabel: 'Components',
+      tabBarLabel: 'FAB',
+      tabBarIcon: ({ color }) => (
+        <Icon name="box" size={25} color={color} solid={false} />
+      ),
+    },
+  },
+  {
+    name: 'Avatar',
+    component: Loadable(AvatarNavigator),
+    shawInMenu: true,
+    options: {
+      tabBarLabel: 'Avatar',
+      tabBarIcon: ({ color }) => (
+        <Icon name="box" size={25} color={color} solid={false} />
+      ),
+    },
+  },
+  {
+    name: 'Typography',
+    component: Loadable(TypographyNavigator),
+    shawInMenu: true,
+    options: {
+      tabBarLabel: 'Typography',
       tabBarIcon: ({ color }) => (
         <Icon name="box" size={25} color={color} solid={false} />
       ),

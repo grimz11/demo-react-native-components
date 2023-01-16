@@ -102,11 +102,15 @@ interface IProps {
   variant?: keyof typeof variants;
   type?: 'error' | 'success' | 'warning' | 'disabled' | 'default';
   children?: React.ReactNode;
+  alignCenter?: boolean;
+  onPress?: () => void;
+  style?: any;
 }
 
 const Container = styled.Text<IProps>`
   ${({ theme, type }) => defaultTextStyles(theme, type)}
   ${({ variant, theme }) => variants[variant!](theme)}
+  ${({ alignCenter }) => alignCenter && 'text-align: center;'}
 `;
 
 export const Text: React.FC<IProps> = ({ children, type, ...props }) => {
